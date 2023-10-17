@@ -59,6 +59,7 @@ def parse_soup(soup: str, dataset_name: str) -> None:
 
         with open(f"{dataset_name}/" + rating + "/" + str(card_nums[rating]).zfill(4), "w", encoding="utf-8") as f:
             f.write(title + full_text)
+            print("Dataset updated")
         card_nums[rating] += 1
         
 
@@ -66,9 +67,9 @@ URL = "https://www.livelib.ru/reviews/~1#reviews"
 
 create_dataset("dataset")
 
-for i in range(1, 10):
+for i in range(1, 100):
     soup = get_page(f"https://www.livelib.ru/reviews/~{i}#reviews")
-    print(soup)
+    print(f"https://www.livelib.ru/reviews/~{i}#reviews")
 
     parse_soup(soup, "dataset")
 
